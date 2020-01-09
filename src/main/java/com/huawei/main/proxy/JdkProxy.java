@@ -15,6 +15,9 @@ class RealSubject implements Subject{
     public void request() {
         System.out.println("处理请求");
     }
+    public void hello(){
+        System.out.println("say hello");
+    }
 }
 //动态代理处理器
 class ProxyHandler implements InvocationHandler{
@@ -36,7 +39,7 @@ class ProxyHandler implements InvocationHandler{
 }
 public class JdkProxy {
     public static void main(String[] args) {
-        RealSubject real = new RealSubject();
+        com.huawei.main.proxy.RealSubject real = new com.huawei.main.proxy.RealSubject();
         Subject obj = (Subject) Proxy.newProxyInstance(Subject.class.getClassLoader(),
                 new Class[]{Subject.class}, new ProxyHandler(real));
         obj.request();
